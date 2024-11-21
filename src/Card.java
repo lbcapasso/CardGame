@@ -3,7 +3,8 @@ public class Card
     private int value;
     private String suit;
     private String rank;
-    public Card(int v, String s, String r)
+    private boolean inUse;
+    public Card( String r, String s, int v)
     {
         value = v;
         suit = s;
@@ -39,5 +40,10 @@ public class Card
     public void setValue(int value)
     {
         this.value = value;
+    }
+
+    @Override
+    public String toString() {
+        return (rank + " of " + suit);
     }
 }
