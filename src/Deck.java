@@ -36,6 +36,26 @@ public class Deck
 
     public Card deal()
     {
-        if ()
+        if(getCardsLeft() == 0)
+        {
+            return null;
+        }
+        else
+        {
+            return cards.get(cardsLeft);
+        }
+    }
+
+    public void shuffle()
+    {
+        for(int i = cards.size() - 1; i > 0; i--)
+        {
+            int locator = (int)(Math.random() * i);
+            Card endCard = cards.get(i);
+            Card randomCard = cards.get(locator);
+            cards.set(i, randomCard);
+            cards.set(locator, endCard);
+
+        }
     }
 }
