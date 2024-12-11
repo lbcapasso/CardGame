@@ -55,7 +55,6 @@ public class Deck
             Card randomCard = cards.get(locator);
             cards.set(i, randomCard);
             cards.set(locator, endCard);
-
         }
     }
 }
