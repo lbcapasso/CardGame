@@ -1,12 +1,9 @@
-import java.util.ArrayList;
-import java.util.Scanner;
-
 public class Game
 {
-    ActualGame game = new ActualGame();
-    Player winner = game.playGame();
+
+    public static void main(String[] args)
+    {
+        ActualGame game = new ActualGame();
+        Player winner = game.playGame();
+    }
 }
-
-
-
-

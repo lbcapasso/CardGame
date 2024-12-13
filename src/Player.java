@@ -6,20 +6,27 @@ public class Player
     private int lives;
     private int points;
     private String name;
-    private boolean alive;
+    private boolean alive = true;
 
     public Player (String newName)
     {
         name = newName;
         points = 0;
         lives = 3;
-        hand = null;
         alive = true;
     }
 
     public void kill()
     {
         alive = false;
+    }
+
+    public void resetHand()
+    {
+        for (int i = 0; i < hand.size(); i++)
+        {
+            hand.remove(0);
+        }
     }
 
     public boolean isAlive()
