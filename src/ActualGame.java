@@ -25,7 +25,7 @@ public class ActualGame
         {
             Deck mainDeck = new Deck(new String[]{"Jack", "Jack", "Jack", "Jack", "Jack", "Jack", "Queen", "Queen", "Queen", "Queen", "Queen", "Queen","King", "King", "King", "King", "King", "King","Ace", "Ace", "Ace", "Ace", "Ace", "Ace"}, new String[]{"Diamonds", "Diamonds", "Diamonds", "Diamonds", "Diamonds", "Diamonds", "Diamonds", "Diamonds", "Diamonds", "Diamonds", "Diamonds", "Diamonds", "Diamonds", "Diamonds", "Diamonds", "Diamonds", "Diamonds", "Diamonds", "Diamonds", "Diamonds", "Diamonds", "Diamonds", "Diamonds", "Diamonds"}, new int[]{1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 4, });
 
-            // Deal initial cards
+
             for (int i = 0; i < 5; i++)
             {
                 if (one.isAlive()) one.addCards(mainDeck.deal());
@@ -34,7 +34,7 @@ public class ActualGame
                 if (four.isAlive()) four.addCards(mainDeck.deal());
             }
 
-            // Game loop
+
             while (!won)
             {
                 gameTable = tableTypes[(int) (Math.random() * 4)];
@@ -68,7 +68,7 @@ public class ActualGame
 
             guessedBluff = false;
 
-            // Check bluff from all other players
+
             for (Player opponent : new Player[]{one, two, three, four})
             {
                 if (opponent == player || !opponent.isAlive()) continue;
@@ -88,7 +88,7 @@ public class ActualGame
                         opponent.removeLives();
                     }
 
-                    // Check if any player died
+
                     if (player.getLives() == 0)
                     {
                         System.out.println(player.getName() + " has died.");
@@ -99,14 +99,14 @@ public class ActualGame
                         System.out.println(opponent.getName() + " has died.");
                         opponent.kill();
                     }
-                    break; // Exit bluff loop after first response
+                    break;
                 }
             }
 
-            // Remove the played card from the player's hand
+
             player.removeCard(playCard);
 
-            // Check for win condition
+
             if (player.getHandSize() == 0)
             {
                 System.out.println(player.getName() + " wins!");
