@@ -6,6 +6,7 @@ public class Player
     private int lives;
     private int points;
     private String name;
+    private boolean alive;
 
     public Player (String newName)
     {
@@ -13,18 +14,36 @@ public class Player
         points = 0;
         lives = 3;
         hand = null;
+        alive = true;
     }
+
+    public void kill()
+    {
+        alive = false;
+    }
+
+    public boolean isAlive()
+    {
+        return alive;
+    }
+
     public Player (String nName, ArrayList<Card> newHand)
     {
         name = nName;
         points = 0;
         lives = 3;
         hand = newHand;
+        alive = true;
     }
 
     public Card getCard(int location)
     {
         return hand.get(location);
+    }
+
+    public void removeLives()
+    {
+        lives = lives - 1;
     }
 
     public int getHandSize()
