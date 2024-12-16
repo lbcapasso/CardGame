@@ -62,6 +62,12 @@ public class ActualGame
             System.out.println("These are your cards:\n" + player.getHand());
             System.out.println("Which card will you play?");
             playCard = input.nextInt();
+            while (playCard > player.getHandSize() - 1)
+            {
+                System.out.println("Which card will you play?");
+                playCard = input.nextInt();
+            }
+
 
             Card playedCard = player.getCard(playCard);
             pile.add(playedCard);
