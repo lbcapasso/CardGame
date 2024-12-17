@@ -34,9 +34,13 @@ public class ActualGame
                 if (four.isAlive()) four.addCards(mainDeck.deal());
             }
 
-
+            System.out.println("Welcome To Liar's Deck. At the start of each round, every person will be dealt 5 cards and will start with 3 lives");
+            System.out.println("Every round the table will be selected. if you place a card that matches the table, then you are safe, but if you don't and someone calls it, you lose a life");
+            System.out.println("Be last to die or first to get rid of all cards to win");
             while (!won)
             {
+
+
                 gameTable = tableTypes[(int) (Math.random() * 4)];
                 System.out.println("This is a " + gameTable + " table.");
 
