@@ -5,9 +5,9 @@ public class ActualGame
 {
 
 
-        Scanner input = new Scanner(System.in);
-        Scanner bluff = new Scanner(System.in);
-        ArrayList<Card> pile = new ArrayList<>();
+        private Scanner input = new Scanner(System.in);
+        private Scanner bluff = new Scanner(System.in);
+        private ArrayList<Card> pile = new ArrayList<>();
         private String bluffing;
         private boolean guessedBluff;
         private boolean won = false;
@@ -15,16 +15,17 @@ public class ActualGame
         int playCard;
         private String gameTable;
         private String[] tableTypes = {"Jack", "Queen", "King", "Ace"};
+        private GameViewer window;
 
-        Player one = new Player("Player One");
-        Player two = new Player("Player Two");
-        Player three = new Player("Player Three");
-        Player four = new Player("Player Four");
+        private Player one = new Player("Player One");
+        private Player two = new Player("Player Two");
+        private Player three = new Player("Player Three");
+        private Player four = new Player("Player Four");
 
         public Player playGame()
         {
             Deck mainDeck = new Deck(new String[]{"Jack", "Jack", "Jack", "Jack", "Jack", "Jack", "Queen", "Queen", "Queen", "Queen", "Queen", "Queen","King", "King", "King", "King", "King", "King","Ace", "Ace", "Ace", "Ace", "Ace", "Ace"}, new String[]{"Diamonds", "Diamonds", "Diamonds", "Diamonds", "Diamonds", "Diamonds", "Diamonds", "Diamonds", "Diamonds", "Diamonds", "Diamonds", "Diamonds", "Diamonds", "Diamonds", "Diamonds", "Diamonds", "Diamonds", "Diamonds", "Diamonds", "Diamonds", "Diamonds", "Diamonds", "Diamonds", "Diamonds"}, new int[]{1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 4, });
-
+            window = new GameViewer(this);
 
             for (int i = 0; i < 5; i++)
             {
@@ -37,12 +38,14 @@ public class ActualGame
             System.out.println("Welcome To Liar's Deck. At the start of each round, every person will be dealt 5 cards and will start with 3 lives");
             System.out.println("Every round the table will be selected. if you place a card that matches the table, then you are safe, but if you don't and someone calls it, you lose a life");
             System.out.println("Be last to die or first to get rid of all cards to win");
+            window.repaint();
             while (!won)
             {
 
 
                 gameTable = tableTypes[(int) (Math.random() * 4)];
                 System.out.println("This is a " + gameTable + " table.");
+                window.repaint();
 
                 processTurn(one, mainDeck);
                 if (won) return one;
@@ -65,10 +68,12 @@ public class ActualGame
             System.out.println(player.getName() + "'s turn.");
             System.out.println("These are your cards:\n" + player.getHand());
             System.out.println("Which card will you play?");
+            window.repaint();
             playCard = input.nextInt();
             while (playCard > player.getHandSize() - 1)
             {
                 System.out.println("Which card will you play?");
+                window.repaint();
                 playCard = input.nextInt();
             }
 
@@ -84,6 +89,7 @@ public class ActualGame
                 if (opponent == player || !opponent.isAlive()) continue;
 
                 System.out.println("Does " + opponent.getName() + " think " + player.getName() + " is lying? (yes/no)");
+                window.repaint();
                 bluffing = bluff.nextLine();
 
                 if (bluffing.equalsIgnoreCase("yes"))
@@ -91,10 +97,12 @@ public class ActualGame
                     if (!playedCard.getRank().equals(gameTable))
                     {
                         System.out.println(player.getName() + " was lying! " + player.getName() + " loses one life.");
+                        window.repaint();
                         player.removeLives();
                     } else
                     {
                         System.out.println(opponent.getName() + " was wrong! " + opponent.getName() + " loses one life.");
+                        window.repaint();
                         opponent.removeLives();
                     }
 
@@ -102,6 +110,7 @@ public class ActualGame
                     if (player.getLives() == 0)
                     {
                         System.out.println(player.getName() + " has died.");
+                        window.repaint();
                         player.kill();
                     }
                     if (opponent.getLives() == 0)
@@ -123,4 +132,10 @@ public class ActualGame
                 won = true;
             }
         }
+
+    public static void main(String[] args)
+    {
+        ActualGame game = new ActualGame();
+        Player winner = game.playGame();
+    }
 }
