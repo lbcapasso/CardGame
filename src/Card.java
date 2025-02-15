@@ -1,14 +1,21 @@
+import javax.swing.*;
+import java.awt.*;
+
 public class Card
 {
     private int value;
+    private Image image;
+    private GameViewer window;
     private String suit;
     private String rank;
     private boolean inUse;
-    public Card( String r, String s, int v)
+
+    public Card( String r, String s, int v, GameViewer w)
     {
         value = v;
         suit = s;
         rank = r;
+        window = w;
     }
 
 
@@ -48,5 +55,8 @@ public class Card
     }
 
 
+    public void draw (Graphics g)
+    {
 
+    }
 }

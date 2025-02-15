@@ -1,20 +1,21 @@
 import java.util.ArrayList;
 
 public class Deck {
+    private GameViewer window;
     private int cardsLeft;
     private ArrayList<Card> cards;
 
-    public Deck(String[] rank, String[] suits, int[] values)
+    public Deck(String[] rank, String[] suits, int[] values, GameViewer w)
     {
         this.cards = new ArrayList<Card>();
         this.cardsLeft = rank.length * suits.length;
+        window = w;
 
-
-        for (int i = 0; i < suits.length; i++)
+        for (int j = 0; j < rank.length; j++)
         {
-            for (int j = 0; j < rank.length; j++)
+            for (int i = 0; i < suits.length; i++)
             {
-                Card newCard = new Card(rank[j], suits[i], values[j]);
+                Card newCard = new Card(rank[j], suits[i], values[j], window );
                 cards.add(newCard);
             }
         }

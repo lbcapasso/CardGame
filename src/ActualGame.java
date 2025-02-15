@@ -24,7 +24,7 @@ public class ActualGame
 
         public Player playGame()
         {
-            Deck mainDeck = new Deck(new String[]{"Jack", "Jack", "Jack", "Jack", "Jack", "Jack", "Queen", "Queen", "Queen", "Queen", "Queen", "Queen","King", "King", "King", "King", "King", "King","Ace", "Ace", "Ace", "Ace", "Ace", "Ace"}, new String[]{"Diamonds", "Diamonds", "Diamonds", "Diamonds", "Diamonds", "Diamonds", "Diamonds", "Diamonds", "Diamonds", "Diamonds", "Diamonds", "Diamonds", "Diamonds", "Diamonds", "Diamonds", "Diamonds", "Diamonds", "Diamonds", "Diamonds", "Diamonds", "Diamonds", "Diamonds", "Diamonds", "Diamonds"}, new int[]{1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 4, });
+            Deck mainDeck = new Deck(new String[]{"Jack", "Jack", "Jack", "Jack", "Jack", "Jack", "Queen", "Queen", "Queen", "Queen", "Queen", "Queen","King", "King", "King", "King", "King", "King","Ace", "Ace", "Ace", "Ace", "Ace", "Ace"}, new String[]{"Diamonds", "Diamonds", "Diamonds", "Diamonds", "Diamonds", "Diamonds", "Diamonds", "Diamonds", "Diamonds", "Diamonds", "Diamonds", "Diamonds", "Diamonds", "Diamonds", "Diamonds", "Diamonds", "Diamonds", "Diamonds", "Diamonds", "Diamonds", "Diamonds", "Diamonds", "Diamonds", "Diamonds"}, new int[]{1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 4}, window);
             window = new GameViewer(this);
 
             for (int i = 0; i < 5; i++)
