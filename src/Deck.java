@@ -1,7 +1,6 @@
 import java.util.ArrayList;
 
 public class Deck {
-    private GameViewer window;
     private int cardsLeft;
     private ArrayList<Card> cards;
 
@@ -9,13 +8,12 @@ public class Deck {
     {
         this.cards = new ArrayList<Card>();
         this.cardsLeft = rank.length * suits.length;
-        window = w;
 
         for (int j = 0; j < rank.length; j++)
         {
             for (int i = 0; i < suits.length; i++)
             {
-                Card newCard = new Card(rank[j], suits[i], values[j], window );
+                Card newCard = new Card(rank[j], suits[i], values[j], w );
                 cards.add(newCard);
             }
         }

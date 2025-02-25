@@ -5,6 +5,7 @@ public class Card
 {
     private int value;
     private Image image;
+    private Image backend;
     private GameViewer window;
     private String suit;
     private String rank;
@@ -16,6 +17,8 @@ public class Card
         suit = s;
         rank = r;
         window = w;
+        backend = new ImageIcon("Resources/Cards/back.png").getImage();
+        image = window.getFront(this);
     }
 
 
@@ -57,6 +60,6 @@ public class Card
 
     public void draw (Graphics g)
     {
-
+        // g.drawImage(image, 500, 400, window);
     }
 }
