@@ -58,8 +58,13 @@ public class Card
     }
 
 
-    public void draw (Graphics g)
+    public void draw (Graphics g, int i)
     {
-        // g.drawImage(image, 500, 400, window);
+        g.drawImage(image, 250 +(100 * i), 600, 100, 150, window);
+    }
+
+    public void drawBack (Graphics g, int i)
+    {
+        g.drawImage(backend, 250 +(100 * i), 600, 100, 150, window);
     }
 }

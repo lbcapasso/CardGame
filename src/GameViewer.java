@@ -1,5 +1,6 @@
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
 
 public class GameViewer extends JFrame
 {
@@ -8,6 +9,7 @@ public class GameViewer extends JFrame
     private Image queen = new ImageIcon("Resources/Cards/47.png").getImage();
     private Image king = new ImageIcon("Resources/Cards/51.png").getImage();
     private Image background = new ImageIcon("Resources/blackjack_table.jpg").getImage();
+    private Player thisPlayer;
 
     private ActualGame trueGame;
     public GameViewer(ActualGame aG)
@@ -22,7 +24,28 @@ public class GameViewer extends JFrame
 
     public void paint(Graphics g)
     {
-        g.drawImage(background, 0,0, 1000,800, this);
+        ArrayList<Card> thisHand = new ArrayList<Card>();
+        g.drawImage(background, 0,0, 2000,800, this);
+        thisPlayer = trueGame.getCurrentPlayer();
+        thisHand = thisPlayer.getHand();
+        for(int i = 0; i < thisHand.size(); i++)
+        {
+            thisHand.get(i).draw(g, i);
+        }
+
+
+    }
+
+    public void paintBack(Graphics g)
+    {
+        ArrayList<Card> thisHand = new ArrayList<Card>();
+        thisPlayer = trueGame.getCurrentPlayer();
+        thisHand = thisPlayer.getHand();
+        for(int i = 0; i < thisHand.size(); i++)
+        {
+            thisHand.get(i).drawBack(g, i);
+        }
+
 
     }
 

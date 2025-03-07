@@ -17,6 +17,7 @@ public class ActualGame
         private String[] tableTypes = {"Jack", "Queen", "King", "Ace"};
         private GameViewer window;
 
+        private Player currentPlayer;
         private Player one = new Player("Player One");
         private Player two = new Player("Player Two");
         private Player three = new Player("Player Three");
@@ -24,8 +25,10 @@ public class ActualGame
 
         public Player playGame()
         {
+            currentPlayer = one;
             window = new GameViewer(this);
             Deck mainDeck = new Deck(new String[]{"Jack", "Jack", "Jack", "Jack", "Jack", "Jack", "Queen", "Queen", "Queen", "Queen", "Queen", "Queen","King", "King", "King", "King", "King", "King","Ace", "Ace", "Ace", "Ace", "Ace", "Ace"}, new String[]{"Diamonds", "Diamonds", "Diamonds", "Diamonds", "Diamonds", "Diamonds", "Diamonds", "Diamonds", "Diamonds", "Diamonds", "Diamonds", "Diamonds", "Diamonds", "Diamonds", "Diamonds", "Diamonds", "Diamonds", "Diamonds", "Diamonds", "Diamonds", "Diamonds", "Diamonds", "Diamonds", "Diamonds"}, new int[]{1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 4}, window);
+            mainDeck.shuffle();
 
             for (int i = 0; i < 5; i++)
             {
@@ -48,15 +51,19 @@ public class ActualGame
                 window.repaint();
 
                 processTurn(one, mainDeck);
+                currentPlayer = one;
                 if (won) return one;
 
                 processTurn(two, mainDeck);
+                currentPlayer = two;
                 if (won) return two;
 
                 processTurn(three, mainDeck);
+                currentPlayer = three;
                 if (won) return three;
 
                 processTurn(four, mainDeck);
+                currentPlayer = four;
                 if (won) return four;
             }
             return null;
@@ -134,6 +141,10 @@ public class ActualGame
                 won = true;
             }
         }
+
+    public Player getCurrentPlayer() {
+        return currentPlayer;
+    }
 
     public static void main(String[] args)
     {
